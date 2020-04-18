@@ -15,7 +15,6 @@ class NaiveCyclePLA(object):
         for line in training_set:
             # add 1 dimension manually
             x.append(1)
-            tmp = line.split(' ')
             for str in line.split(' '):
                 if len(str.split('\t')) == 1:
                     x.append(float(str))
@@ -35,6 +34,7 @@ class NaiveCyclePLA(object):
         while True:
             err = False
             for i in range(self.__count):
+                
                 # two vectors have large angles-> dot <=0
                 result = numpy.dot(x_train[i], w)
                 if result[0] * y_train[i] <= 0:
