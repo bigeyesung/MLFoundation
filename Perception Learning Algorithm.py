@@ -49,4 +49,4 @@ class PLA():
 
 if __name__ == '__main__':
     perceptron = PLA(5, 400)
-    print(perceptron.countIteration("source/hw1_15_train.dat"))
+    print(perceptron.countIteration("source/PLA_data.dat"))
