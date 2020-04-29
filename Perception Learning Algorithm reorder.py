@@ -56,5 +56,5 @@ if __name__ == '__main__':
     sum = 0
     for i in range(2000):
         perceptron = RandomPLA(5, 400)
-        sum += perceptron.countIteration('source/hw1_15_train.dat')
+        sum += perceptron.countIteration('source/PLA_data.dat')
     print(sum / 2000.0)
