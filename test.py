@@ -5,7 +5,7 @@ import numpy as np
 def generate_input_data(time_seed):
     np.random.seed(time_seed)
     raw_X = np.sort(np.random.uniform(-1, 1, 20))
-    # 加20%噪声
+    # 20% noise
     noised_y = np.sign(raw_X) * np.where(np.random.random(raw_X.shape[0]) < 0.2, -1, 1)
     return raw_X, noised_y
 def calculate_Ein(x, y):
