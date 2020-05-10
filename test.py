@@ -8,6 +8,7 @@ def generate_input_data(time_seed):
     # 20% noise
     noised_y = np.sign(raw_X) * np.where(np.random.random(raw_X.shape[0]) < 0.2, -1, 1)
     return raw_X, noised_y
+    
 def calculate_Ein(x, y):
     # calculate median of interval & negative infinite & positive infinite
     thetas = np.array([float("-inf")] + [(x[i] + x[i + 1]) / 2 for i in range(0, x.shape[0] - 1)] + [float("inf")])
