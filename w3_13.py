@@ -33,7 +33,7 @@ class Solution():
         return features, labels
 
 
-    def error_rate(self, features, labels, w):
+    def in_sample_err(self, features, labels, w):
         wrong = 0
         for i in range(len(labels)):
             if np.dot(features[i], w) * labels[i, 0] < 0:
@@ -47,22 +47,21 @@ class Solution():
             model     : g(x) = Wt * X
             strategy  : squared error
             algorithm : close form(matrix)
-            result    : w = (Xt.X)^-1.Xt.Y
+            result    : Wlin = (Xt.X)^-1.Xt.Y (pseudo-inverse)
         """
         return np.linalg.inv(np.dot(X.T, X)).dot(X.T).dot(Y)
 
 
 if __name__ == '__main__':
-
-    # 13
-    error_rate_array = []
+    # 13 in_sample_err
+    in_sample_err_array = []
     sol = Solution()
     for i in range(1000):
         (features, labels) = sol.training_data_with_random_error(1000)
         w13 = sol.linear_regression_closed_form(features, labels)
-        error_rate_array.append(sol.error_rate(features, labels, w13))
+        in_sample_err_array.append(sol.in_sample_err(features, labels, w13))
 
-    # error rate, approximately 0.5
-    avr_err = sum(error_rate_array) / (len(error_rate_array) * 1.0)
+    # in_sample_err rate, approximately 0.5
+    avr_err = sum(in_sample_err_array) / (len(in_sample_err_array) * 1.0)
 
     print("13--Linear regression for classification without feature transform:Average error--", avr_err)
