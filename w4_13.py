@@ -20,6 +20,7 @@ class Solution:
 
     # W_reg:
     def calculate_w_reg(self, x, y, lambda_value):
+        # W_reg = Inv(x.T *x + L*I) * x.T*y
         return np.dot(np.dot(np.linalg.inv(np.dot(x.transpose(), x) + lambda_value * np.eye(x.shape[1])), x.transpose()), y)
 
 
